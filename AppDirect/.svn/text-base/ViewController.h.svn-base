@@ -1,0 +1,38 @@
+//
+//  ViewController.h
+//  AppDirect
+//
+//  Created by sangfor on 13-10-28.
+//  Copyright (c) 2013年 sangfor. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+#import "AuthHelper.h"
+#import "sdkheader.h"
+#import "sslvpnnb.h"
+
+#define say_log(str) printf("[log]:%s,%s,%d:%s\n",__FILE__,__FUNCTION__,__LINE__,str)
+#define say_err(err) printf("[log]:%s,%s,%d:%s,%s\n",__FILE__,__FUNCTION__,__LINE__,err,get_err())
+#define get_err() ssl_vpn_get_err()
+
+@interface ViewController : UIViewController<SangforSDKDelegate>
+{
+    AuthHelper *helper;
+    IBOutlet UIButton *bt_login;
+    IBOutlet UIButton *bt_logout;
+    IBOutlet UIButton *bt_request;
+    IBOutlet UIButton *bt_autologin;
+}
+
+@property (nonatomic, retain) AuthHelper *helper;
+@property (nonatomic, retain) UIButton *bt_login;
+@property (nonatomic, retain) UIButton *bt_logout;
+@property (nonatomic, retain) UIButton *bt_request;
+@property (nonatomic, retain) UIButton *bt_autologin;
+
+- (IBAction)login:(id)sender;
+- (IBAction)logout:(id)sender;
+- (IBAction)requestRc:(id)sender;
+- (IBAction)autoLogin:(id)sender;
+
+@end
